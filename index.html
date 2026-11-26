@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDN SINDANGASIH SALOPA - Website Sekolah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* RESET & GAYA UMUM */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            background-color: #f8fafc;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .bayu_container {
+            width: 90%;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        /* HEADER DAN NAVBAR */
+        .bayu_header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .bayu_navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .bayu_logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bayu_brand_icon {
+            width: 44px;
+            height: 44px;
+            background-color: #005A9C;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+        .bayu_brand_text h1 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #005A9C;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+
+        .bayu_brand_text p {
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748b;
+            letter-spacing: 0.5px;
+        }
+
+        .bayu_nav_menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bayu_nav_link {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            padding: 8px 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .bayu_nav_link:hover,
+        .bayu_nav_link.active {
+            color: #005A9C;
+        }
+
+        .bayu_btn_ppdb {
+            background-color: #d97706;
+            color: #ffffff !important;
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .bayu_btn_ppdb:hover {
+            background-color: #b45309;
+            transform: translateY(-2px);
+        }
+
+        .bayu_menu_toggle {
+            display: none;
+            background: none;
+            border: 1px solid #005A9C;
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 16px;
+            color: #005A9C;
+            cursor: pointer;
+        }
+
+        /* HERO BANNER */
+        .bayu_hero {
+            background: linear-gradient(rgba(0, 54, 102, 0.88), rgba(0, 90, 156, 0.9)), url('asset/sdn_salopa_1.jpg') center/cover no-repeat;
+            color: #ffffff;
+            padding: 70px 0;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+        }
+
+        .bayu_hero_content {
+            max-width: 750px;
+        }
+
+        .bayu_hero_badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(217, 119, 6, 0.3);
+            border: 1px solid #d97706;
+            color: #fed7aa;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .bayu_hero_content h2 {
+            font-size: 34px;
+            font-weight: bold;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .bayu_hero_content p {
+            font-size: 15px;
+            color: #e2e8f0;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .bayu_hero_buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .bayu_btn_utama {
+            background-color: #d97706;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .bayu_btn_utama:hover {
+            background-color: #b45309;
+        }
+
+        .bayu_btn_kedua {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .bayu_btn_kedua:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* KARTU FITUR UTAMA */
+        .bayu_fitur_wrapper {
+            margin-top: -45px;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 50px;
+        }
+
+        .bayu_fitur_grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .bayu_card_fitur {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 22px 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-bottom: 4px solid #005A9C;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .bayu_card_fitur:hover {
+            transform: translateY(-5px);
+            border-bottom-color: #d97706;
+        }
+
+        .bayu_ikon_fitur {
+            width: 48px;
+            height: 48px;
+            background-color: #eff6ff;
+            color: #005A9C;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 12px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .bayu_card_fitur:hover .bayu_ikon_fitur {
+            background-color: #005A9C;
+            color: #ffffff;
+        }
+
+        .bayu_card_fitur h3 {
+            font-size: 15px;
+            font-weight: bold;
+            color: #003666;
+            margin-bottom: 8px;
+        }
+
+        .bayu_card_fitur p {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* SECTION UMUM */
+        .bayu_section {
+            padding: 50px 0;
+        }
+
+        .bayu_section_header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+        }
+
+        .bayu_section_tag {
+            font-size: 12px;
+            font-weight: bold;
+            color: #d97706;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .bayu_section_title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #003666;
+            margin-bottom: 10px;
+        }
+
+        .bayu_section_desc {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* TENTANG SEKOLAH */
+        .bayu_tentang_sekolah {
+            background-color: #ffffff;
+        }
+
+        .bayu_tentang_grid {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .bayu_tentang_img_box {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 4px solid #ffffff;
+        }
+
+        .bayu_tentang_img_box img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .bayu_tentang_img_caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 54, 102, 0.9);
+            color: #ffffff;
+            padding: 10px 15px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bayu_tentang_teks h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #005A9C;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .bayu_tentang_teks p {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .bayu_profil_kepsek_box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f1f5f9;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bayu_profil_kepsek_icon {
+            width: 40px;
+            height: 40px;
+            background-color: #005A9C;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .bayu_profil_kepsek_info h4 {
+            font-size: 14px;
+            color: #003666;
+            margin-bottom: 2px;
+        }
+
+        .bayu_profil_kepsek_info p {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 0;
+        }
+
+        /* STATISTIK RESMI SEKOLAH */
+        .bayu_statistik_band {
+            background-color: #005A9C;
+            color: #ffffff;
+            padding: 45px 0;
+        }
+
+        .bayu_statistik_grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .bayu_statistik_item {
+            padding: 10px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .bayu_statistik_item:last-child {
+            border-right: none;
+        }
+
+        .bayu_statistik_icon {
+            font-size: 28px;
+            color: #fed7aa;
+            margin-bottom: 8px;
+        }
+
+        .bayu_statistik_angka {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #ffffff;
+        }
+
+        .bayu_statistik_label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fed7aa;
+        }
+
+        .bayu_statistik_sub {
+            font-size: 12px;
+            color: #cbd5e1;
+            margin-top: 4px;
+        }
+
+        /* PROGRAM DAN EKSTRAKURIKULER */
+        .bayu_program_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .bayu_program_card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s ease;
+        }
+
+        .bayu_program_card:hover {
+            transform: translateY(-4px);
+        }
+
+        .bayu_program_img {
+            height: 190px;
+            overflow: hidden;
+        }
+
+        .bayu_program_img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bayu_program_body {
+            padding: 18px;
+        }
+
+        .bayu_program_body h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #003666;
+            margin-bottom: 8px;
+        }
+
+        .bayu_program_body p {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .bayu_program_link {
+            font-size: 13px;
+            font-weight: bold;
+            color: #005A9C;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bayu_program_link:hover {
+            color: #d97706;
+        }
+
+        /* GALERI FOTO RESMI SALOPA */
+        .bayu_galeri_sekolah {
+            background-color: #ffffff;
+        }
+
+        .bayu_galeri_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .bayu_galeri_item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            height: 200px;
+        }
+
+        .bayu_galeri_item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .bayu_galeri_item:hover img {
+            transform: scale(1.06);
+        }
+
+        .bayu_galeri_caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px 12px;
+            background: linear-gradient(transparent, rgba(0, 54, 102, 0.9));
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* WARTA DAN BERITA TERKINI */
+        .bayu_berita_sekolah {
+            background-color: #f1f5f9;
+        }
+
+        .bayu_berita_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .bayu_berita_card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bayu_berita_thumb {
+            height: 170px;
+            overflow: hidden;
+        }
+
+        .bayu_berita_thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bayu_berita_content {
+            padding: 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bayu_berita_date {
+            font-size: 11px;
+            color: #d97706;
+            font-weight: bold;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .bayu_berita_title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #003666;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .bayu_berita_excerpt {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            flex: 1;
+        }
+
+        .bayu_berita_link {
+            font-size: 13px;
+            font-weight: bold;
+            color: #005A9C;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bayu_berita_link:hover {
+            color: #d97706;
+        }
+
+        /* BAGIAN KONTAK DAN FORM PESAN */
+        .bayu_kontak_section {
+            background-color: #ffffff;
+            padding: 55px 0;
+        }
+
+        .bayu_kontak_grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 35px;
+        }
+
+        .bayu_kontak_info {
+            background-color: #f8fafc;
+            padding: 28px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .bayu_kontak_info h3 {
+            font-size: 18px;
+            color: #003666;
+            margin-bottom: 10px;
+        }
+
+        .bayu_kontak_info p {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .bayu_kontak_list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .bayu_kontak_item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 13px;
+        }
+
+        .bayu_kontak_icon {
+            width: 36px;
+            height: 36px;
+            background-color: #eff6ff;
+            color: #005A9C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .bayu_kontak_detail strong {
+            display: block;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .bayu_kontak_detail span {
+            color: #64748b;
+        }
+
+        .bayu_form_kontak_box {
+            background-color: #ffffff;
+            padding: 28px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .bayu_form_kontak_box h3 {
+            font-size: 18px;
+            color: #003666;
+            margin-bottom: 6px;
+        }
+
+        .bayu_form_kontak_box p {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 18px;
+        }
+
+        .bayu_input_group {
+            margin-bottom: 14px;
+        }
+
+        .bayu_input_group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 5px;
+        }
+
+        .bayu_input_group label span {
+            color: #dc2626;
+        }
+
+        .bayu_input_group input,
+        .bayu_input_group textarea {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .bayu_input_group input:focus,
+        .bayu_input_group textarea:focus {
+            border-color: #005A9C;
+            box-shadow: 0 0 0 3px rgba(0, 90, 156, 0.12);
+        }
+
+        .bayu_btn_kirim_pesan {
+            background-color: #005A9C;
+            color: #ffffff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .bayu_btn_kirim_pesan:hover {
+            background-color: #003666;
+        }
+
+        /* BANNER AJAKAN PPDB */
+        .bayu_cta_ppdb {
+            background-color: #003666;
+            color: #ffffff;
+            padding: 45px 0;
+            border-top: 4px solid #d97706;
+        }
+
+        .bayu_cta_content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .bayu_cta_text h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .bayu_cta_text p {
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .bayu_btn_cta_large {
+            background-color: #d97706;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .bayu_btn_cta_large:hover {
+            background-color: #b45309;
+        }
+
+        /* FOOTER */
+        .bayu_footer {
+            background-color: #002244;
+            color: #94a3b8;
+            padding-top: 45px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bayu_footer_grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .bayu_footer_col h4 {
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #d97706;
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .bayu_footer_about p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .bayu_footer_social {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .bayu_footer_social a {
+            width: 32px;
+            height: 32px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .bayu_footer_social a:hover {
+            background-color: #d97706;
+        }
+
+        .bayu_footer_links li {
+            margin-bottom: 8px;
+        }
+
+        .bayu_footer_links a {
+            font-size: 13px;
+            color: #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .bayu_footer_links a:hover {
+            color: #ffffff;
+        }
+
+        .bayu_footer_contact li {
+            font-size: 13px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .bayu_footer_contact li i {
+            color: #d97706;
+            margin-top: 4px;
+            font-size: 14px;
+        }
+
+        .bayu_footer_bottom {
+            background-color: #001730;
+            padding: 16px 0;
+            font-size: 12px;
+            text-align: center;
+            color: #64748b;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* RESPONSIVE MOBILE */
+        @media (max-width: 900px) {
+            .bayu_fitur_grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bayu_tentang_grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bayu_statistik_grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bayu_statistik_item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                padding-bottom: 15px;
+            }
+
+            .bayu_program_grid,
+            .bayu_galeri_grid,
+            .bayu_berita_grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bayu_kontak_grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bayu_footer_grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .bayu_menu_toggle {
+                display: block;
+            }
+
+            .bayu_nav_menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                flex-direction: column;
+                padding: 15px 20px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                display: none;
+                gap: 12px;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            .bayu_nav_menu.active {
+                display: flex;
+            }
+
+            .bayu_nav_link {
+                width: 100%;
+                padding: 6px 0;
+            }
+
+            .bayu_btn_ppdb {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .bayu_hero_content h2 {
+                font-size: 24px;
+            }
+
+            .bayu_fitur_grid,
+            .bayu_program_grid,
+            .bayu_galeri_grid,
+            .bayu_berita_grid,
+            .bayu_statistik_grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bayu_cta_content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .bayu_footer_grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. HEADER DAN NAVBAR -->
+    <div class="bayu_header">
+        <div class="bayu_container">
+            <div class="bayu_navbar">
+                <!-- Logo & Identitas -->
+                <a href="index.html" class="bayu_logo">
+                    <div class="bayu_brand_icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="bayu_brand_text">
+                        <h1>SDN SINDANGASIH</h1>
+                        <p>KECAMATAN SALOPA • KAB. TASIKMALAYA</p>
+                    </div>
+                </a>
+
+                <!-- Tombol Menu Mobile -->
+                <button class="bayu_menu_toggle" id="bayu_menu_toggle" aria-label="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- Daftar Menu Navigasi -->
+                <ul class="bayu_nav_menu" id="bayu_nav_menu">
+                    <li><a href="index.html" class="bayu_nav_link active"><i class="fa-solid fa-house"></i> Beranda</a>
+                    </li>
+                    <li><a href="#about" class="bayu_nav_link"><i class="fa-solid fa-circle-info"></i> Profil
+                            Sekolah</a></li>
+                    <li><a href="#akademik" class="bayu_nav_link"><i class="fa-solid fa-book-open"></i> Program</a></li>
+                    <li><a href="#galeri" class="bayu_nav_link"><i class="fa-solid fa-images"></i> Galeri</a></li>
+                    <li><a href="#berita" class="bayu_nav_link"><i class="fa-solid fa-newspaper"></i> Berita</a></li>
+                    <li><a href="#contact" class="bayu_nav_link"><i class="fa-solid fa-phone"></i> Kontak</a></li>
+                    <li><a href="formulirpendaftaran.html" class="bayu_btn_ppdb"><i class="fa-solid fa-user-plus"></i>
+                            PPDB Online</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. HERO BANNER -->
+    <div class="bayu_hero" id="home">
+        <div class="bayu_container">
+            <div class="bayu_hero_content">
+                <div class="bayu_hero_badge"><i class="fa-solid fa-bullhorn"></i> Penerimaan Peserta Didik Baru (PPDB)
+                    2026/2027</div>
+                <h2>Membangun Generasi Cerdas, Berakhlak & Berkarakter di Salopa</h2>
+                <p>
+                    Selamat datang di website resmi SDN Sindangasih, Kecamatan Salopa, Kabupaten Tasikmalaya.
+                    Sekolah Dasar Negeri dengan lingkungan belajar yang asri, nyaman, ramah anak, dan dibimbing oleh
+                    tenaga pendidik yang berdedikasi.
+                </p>
+                <div class="bayu_hero_buttons">
+                    <a href="formulirpendaftaran.html" class="bayu_btn_utama"><i class="fa-solid fa-file-pen"></i>
+                        Daftar Sekarang (PPDB)</a>
+                    <a href="#about" class="bayu_btn_kedua"><i class="fa-solid fa-circle-play"></i> Mengenal Sekolah
+                        Kami</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. KARTU FITUR UTAMA -->
+    <div class="bayu_fitur_wrapper">
+        <div class="bayu_container">
+            <div class="bayu_fitur_grid">
+                <!-- Fitur 1 -->
+                <div class="bayu_card_fitur">
+                    <div class="bayu_ikon_fitur"><i class="fa-solid fa-book-open-reader"></i></div>
+                    <h3>Kurikulum Terpadu</h3>
+                    <p>Pembelajaran interaktif yang berpusat pada minat dan perkembangan kemampuan setiap siswa.</p>
+                </div>
+                <!-- Fitur 2 -->
+                <div class="bayu_card_fitur">
+                    <div class="bayu_ikon_fitur"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h3>Pendidikan Karakter</h3>
+                    <p>Penanaman budi pekerti, pembiasaan religi Islam, kedisiplinan, dan kearifan budaya Sunda.</p>
+                </div>
+                <!-- Fitur 3 -->
+                <div class="bayu_card_fitur">
+                    <div class="bayu_ikon_fitur"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <h3>Guru Profesional</h3>
+                    <p>Tenaga pendidik yang berpengalaman, bersertifikasi, dan penuh perhatian mendampingi anak.</p>
+                </div>
+                <!-- Fitur 4 -->
+                <div class="bayu_card_fitur">
+                    <div class="bayu_ikon_fitur"><i class="fa-solid fa-school"></i></div>
+                    <h3>Fasilitas Lengkap</h3>
+                    <p>Memiliki 6 ruang kelas belajar, perpustakaan, sarana ibadah, dan halaman bermain yang asri.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. TENTANG SEKOLAH (PROFIL & FOTO ASLI SALOPA) -->
+    <div class="bayu_section bayu_tentang_sekolah" id="about">
+        <div class="bayu_container">
+            <div class="bayu_tentang_grid">
+                <!-- Foto Asli Gedung Salopa -->
+                <div class="bayu_tentang_img_box">
+                    <img src="asset/sdn_salopa_2.jpg" alt="Gedung SDN Sindangasih Salopa">
+                    <div class="bayu_tentang_img_caption">
+                        <i class="fa-solid fa-camera"></i> Gedung & Halaman Belajar SDN Sindangasih Salopa
+                    </div>
+                </div>
+
+                <!-- Teks Sambutan & Profil -->
+                <div class="bayu_tentang_teks">
+                    <span class="bayu_section_tag">Profil Sekolah</span>
+                    <h2>Pendidikan Berkualitas untuk Masa Depan Cerah</h2>
+                    <p>
+                        <strong>Assalamu’alaikum Warahmatullahi Wabarakatuh,</strong><br>
+                        Selamat datang di portal informasi resmi <strong>SDN Sindangasih</strong> (NPSN: 20210218).
+                        Sekolah kami berlokasi di Dusun Sindangasih, Desa Banjarwaringin, Kecamatan Salopa, Kabupaten
+                        Tasikmalaya.
+                    </p>
+                    <p>
+                        Dengan fasilitas yang memadai dan rasio pembelajaran yang sehat (rata-rata 18 siswa per kelas),
+                        kami senantiasa berkomitmen menghadirkan suasana belajar yang nyaman, disiplin, dan mendidik
+                        setiap siswa dengan penuh kasih sayang.
+                    </p>
+                    <p>
+                        Kami mengajak seluruh orang tua dan masyarakat untuk bersama-sama membimbing putra-putri kita
+                        menjadi generasi yang bertakwa, cerdas, dan membanggakan.
+                    </p>
+
+                    <div class="bayu_profil_kepsek_box">
+                        <div class="bayu_profil_kepsek_icon"><i class="fa-solid fa-user-tie"></i></div>
+                        <div class="bayu_profil_kepsek_info">
+                            <h4>Kepala Sekolah & Dewan Guru</h4>
+                            <p>SDN Sindangasih, Kecamatan Salopa, Kabupaten Tasikmalaya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. STATISTIK RESMI SEKOLAH -->
+    <div class="bayu_statistik_band">
+        <div class="bayu_container">
+            <div class="bayu_statistik_grid">
+                <div class="bayu_statistik_item">
+                    <div class="bayu_statistik_icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="bayu_statistik_angka">108</div>
+                    <div class="bayu_statistik_label">Siswa Aktif</div>
+                    <div class="bayu_statistik_sub">58 Laki-laki • 50 Perempuan</div>
+                </div>
+                <div class="bayu_statistik_item">
+                    <div class="bayu_statistik_icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <div class="bayu_statistik_angka">5</div>
+                    <div class="bayu_statistik_label">Guru & Tenaga Pendidik</div>
+                    <div class="bayu_statistik_sub">100% Sertifikasi Pendidik</div>
+                </div>
+                <div class="bayu_statistik_item">
+                    <div class="bayu_statistik_icon"><i class="fa-solid fa-door-open"></i></div>
+                    <div class="bayu_statistik_angka">6</div>
+                    <div class="bayu_statistik_label">Rombongan Belajar</div>
+                    <div class="bayu_statistik_sub">Kelas 1 hingga Kelas 6 Lengkap</div>
+                </div>
+                <div class="bayu_statistik_item">
+                    <div class="bayu_statistik_icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <div class="bayu_statistik_angka">1985</div>
+                    <div class="bayu_statistik_label">Tahun Berdiri</div>
+                    <div class="bayu_statistik_sub">40+ Tahun Mengabdi di Salopa</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. PROGRAM & EKSTRAKURIKULER -->
+    <div class="bayu_section" id="akademik">
+        <div class="bayu_container">
+            <div class="bayu_section_header">
+                <span class="bayu_section_tag">Program Sekolah</span>
+                <h2 class="bayu_section_title">Kegiatan & Ekstrakurikuler</h2>
+                <p class="bayu_section_desc">Mendukung perkembangan potensi minat dan bakat peserta didik secara
+                    seimbang.</p>
+            </div>
+
+            <div class="bayu_program_grid">
+                <!-- Program 1 -->
+                <div class="bayu_program_card">
+                    <div class="bayu_program_img">
+                        <img src="asset/sdn_salopa_3.jpg" alt="Pramuka">
+                    </div>
+                    <div class="bayu_program_body">
+                        <h3>Gerakan Pramuka Siaga</h3>
+                        <p>Melatih kemandirian, kekompakan, kepemimpinan, dan cinta lingkungan bagi siswa.</p>
+                        <a href="formulirpendaftaran.html" class="bayu_program_link">Lihat Selengkapnya <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="bayu_program_card">
+                    <div class="bayu_program_img">
+                        <img src="asset/sdn_salopa_4.jpg" alt="Seni Budaya Sunda">
+                    </div>
+                    <div class="bayu_program_body">
+                        <h3>Seni & Budaya Sunda</h3>
+                        <p>Mengenalkan seni tari tradisional, pupuh Sunda, dan pembiasaan etika kearifan lokal.</p>
+                        <a href="formulirpendaftaran.html" class="bayu_program_link">Lihat Selengkapnya <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="bayu_program_card">
+                    <div class="bayu_program_img">
+                        <img src="asset/sdn_salopa_5.jpg" alt="Keagamaan">
+                    </div>
+                    <div class="bayu_program_body">
+                        <h3>Pembiasaan Shalat & Doa Harian</h3>
+                        <p>Pembinaan spiritual melalui hafalan surat pendek juz 30 dan doa sebelum belajar.</p>
+                        <a href="formulirpendaftaran.html" class="bayu_program_link">Lihat Selengkapnya <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. GALERI FOTO RESMI SALOPA -->
+    <div class="bayu_section bayu_galeri_sekolah" id="galeri">
+        <div class="bayu_container">
+            <div class="bayu_section_header">
+                <span class="bayu_section_tag">Dokumentasi</span>
+                <h2 class="bayu_section_title">Galeri Foto SDN Sindangasih Salopa</h2>
+                <p class="bayu_section_desc">Foto suasana lingkungan dan fasilitas belajar mengajar di SDN Sindangasih,
+                    Salopa.</p>
+            </div>
+
+            <div class="bayu_galeri_grid">
+                <div class="bayu_galeri_item">
+                    <img src="asset/sdn_salopa_1.jpg" alt="Gedung Utama SDN Sindangasih">
+                    <div class="bayu_galeri_caption"><i class="fa-solid fa-camera"></i> Gedung Utama & Halaman Depan
+                    </div>
+                </div>
+                <div class="bayu_galeri_item">
+                    <img src="asset/sdn_salopa_2.jpg" alt="Ruang Belajar Siswa">
+                    <div class="bayu_galeri_caption"><i class="fa-solid fa-camera"></i> Bangunan Ruang Kelas & Selasar
+                    </div>
+                </div>
+                <div class="bayu_galeri_item">
+                    <img src="asset/sdn_salopa_3.jpg" alt="Sarana Belajar">
+                    <div class="bayu_galeri_caption"><i class="fa-solid fa-camera"></i> Fasilitas Belajar Mengajar</div>
+                </div>
+                <div class="bayu_galeri_item">
+                    <img src="asset/sdn_salopa_4.jpg" alt="Lingkungan Sekolah">
+                    <div class="bayu_galeri_caption"><i class="fa-solid fa-camera"></i> Lingkungan Sekolah yang Asri
+                    </div>
+                </div>
+                <div class="bayu_galeri_item">
+                    <img src="asset/sdn_salopa_5.jpg" alt="Tampak Samping Sekolah">
+                    <div class="bayu_galeri_caption"><i class="fa-solid fa-camera"></i> Pintu Masuk & Halaman Samping
+                    </div>
+                </div>
+                <div class="bayu_galeri_item">
+                    <img src="asset/fotosdnsindangasih.jpg" alt="Foto Sekolah">
+                    <div class="bayu_galeri_caption"><i class="fa-solid fa-camera"></i> SDN Sindangasih, Salopa
+                        Tasikmalaya</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. WARTA & BERITA TERKINI -->
+    <div class="bayu_section bayu_berita_sekolah" id="berita">
+        <div class="bayu_container">
+            <div class="bayu_section_header">
+                <span class="bayu_section_tag">Informasi Terkini</span>
+                <h2 class="bayu_section_title">Berita & Pengumuman Sekolah</h2>
+                <p class="bayu_section_desc">Informasi terbaru seputar kegiatan dan agenda di SDN Sindangasih Salopa.
+                </p>
+            </div>
+
+            <div class="bayu_berita_grid">
+                <!-- Berita 1 -->
+                <div class="bayu_berita_card">
+                    <div class="bayu_berita_thumb">
+                        <img src="asset/sdn_salopa_1.jpg" alt="PPDB Online">
+                    </div>
+                    <div class="bayu_berita_content">
+                        <span class="bayu_berita_date"><i class="fa-regular fa-calendar"></i> 21 November 2026</span>
+                        <h3 class="bayu_berita_title">Pendaftaran Peserta Didik Baru (PPDB) Tahun 2026/2027 Resmi Dibuka
+                        </h3>
+                        <p class="bayu_berita_excerpt">Pendaftaran calon siswa baru SDN Sindangasih Salopa kini dapat
+                            dilakukan secara online melalui website ini...</p>
+                        <a href="formulirpendaftaran.html" class="bayu_berita_link">Baca Selengkapnya <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Berita 2 -->
+                <div class="bayu_berita_card">
+                    <div class="bayu_berita_thumb">
+                        <img src="asset/sdn_salopa_2.jpg" alt="Kegiatan Belajar">
+                    </div>
+                    <div class="bayu_berita_content">
+                        <span class="bayu_berita_date"><i class="fa-regular fa-calendar"></i> 15 November 2026</span>
+                        <h3 class="bayu_berita_title">SDN Sindangasih Tingkatkan Kualitas Pembelajaran dan Fasilitas
+                            Siswa</h3>
+                        <p class="bayu_berita_excerpt">Dengan bimbingan para guru profesional, kegiatan belajar mengajar
+                            berjalan aktif, kreatif, dan menyenangkan...</p>
+                        <a href="#berita" class="bayu_berita_link">Baca Selengkapnya <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Berita 3 -->
+                <div class="bayu_berita_card">
+                    <div class="bayu_berita_thumb">
+                        <img src="asset/sdn_salopa_3.jpg" alt="Literasi Siswa">
+                    </div>
+                    <div class="bayu_berita_content">
+                        <span class="bayu_berita_date"><i class="fa-regular fa-calendar"></i> 08 November 2026</span>
+                        <h3 class="bayu_berita_title">Gerakan 15 Menit Membaca Buku di Ruang Perpustakaan Sekolah</h3>
+                        <p class="bayu_berita_excerpt">Seluruh siswa aktif membaca buku cerita dan ilmu pengetahuan
+                            untuk menumbuhkan minat literasi sejak dini...</p>
+                        <a href="#berita" class="bayu_berita_link">Baca Selengkapnya <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. BAGIAN KONTAK DAN FORM PESAN -->
+    <div class="bayu_kontak_section" id="contact">
+        <div class="bayu_container">
+            <div class="bayu_section_header">
+                <span class="bayu_section_tag">Hubungi Kami</span>
+                <h2 class="bayu_section_title">Kontak & Layanan Informasi</h2>
+                <p class="bayu_section_desc">Punya pertanyaan seputar SDN Sindangasih Salopa? Silakan hubungi kami atau
+                    kirim pesan langsung melalui form di bawah ini.</p>
+            </div>
+
+            <div class="bayu_kontak_grid">
+                <!-- Info Kontak -->
+                <div class="bayu_kontak_info">
+                    <h3>Informasi Sekolah</h3>
+                    <p>Silakan berkunjung langsung ke sekolah kami atau hubungi kami melalui saluran komunikasi resmi
+                        berikut:</p>
+                    <div class="bayu_kontak_list">
+                        <div class="bayu_kontak_item">
+                            <div class="bayu_kontak_icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="bayu_kontak_detail">
+                                <strong>Alamat Sekolah:</strong>
+                                <span>Kp. Sindangasih RT 01 / RW 01, Desa Banjarwaringin, Kec. Salopa, Kab. Tasikmalaya
+                                    (46192)</span>
+                            </div>
+                        </div>
+                        <div class="bayu_kontak_item">
+                            <div class="bayu_kontak_icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="bayu_kontak_detail">
+                                <strong>Nomor Telepon / WhatsApp:</strong>
+                                <span>0853-5341-9201</span>
+                            </div>
+                        </div>
+                        <div class="bayu_kontak_item">
+                            <div class="bayu_kontak_icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="bayu_kontak_detail">
+                                <strong>Email Resmi:</strong>
+                                <span>sdnsindangasih@yahoo.com</span>
+                            </div>
+                        </div>
+                        <div class="bayu_kontak_item">
+                            <div class="bayu_kontak_icon"><i class="fa-solid fa-clock"></i></div>
+                            <div class="bayu_kontak_detail">
+                                <strong>Jam Pelayanan Sekolah:</strong>
+                                <span>Senin - Jumat (07.00 - 13.00 WIB)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Kirim Pesan -->
+                <div class="bayu_form_kontak_box">
+                    <h3>Kirim Pesan ke Sekolah</h3>
+                    <p>Isi formulir singkat di bawah ini untuk mengirim pesan, pertanyaan, atau saran:</p>
+                    <form action="#" method="POST"
+                        onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda telah berhasil dikirim kepada pihak SDN Sindangasih Salopa.'); this.reset();">
+                        <div class="bayu_input_group">
+                            <label for="nama_pengirim">Nama Lengkap <span>*</span></label>
+                            <input type="text" id="nama_pengirim" name="nama_pengirim"
+                                placeholder="Contoh: Budi Santoso" required>
+                        </div>
+                        <div class="bayu_input_group">
+                            <label for="kontak_pengirim">Email atau No. WhatsApp <span>*</span></label>
+                            <input type="text" id="kontak_pengirim" name="kontak_pengirim"
+                                placeholder="Contoh: 08123456789 atau email@gmail.com" required>
+                        </div>
+                        <div class="bayu_input_group">
+                            <label for="subjek_pesan">Subjek Pesan <span>*</span></label>
+                            <input type="text" id="subjek_pesan" name="subjek_pesan"
+                                placeholder="Contoh: Pertanyaan Syarat PPDB" required>
+                        </div>
+                        <div class="bayu_input_group">
+                            <label for="isi_pesan">Isi Pesan <span>*</span></label>
+                            <textarea id="isi_pesan" name="isi_pesan" rows="4"
+                                placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+                        </div>
+                        <button type="submit" class="bayu_btn_kirim_pesan">
+                            <i class="fa-solid fa-paper-plane"></i> Kirim Pesan Sekarang
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. BANNER AJAKAN PENDAFTARAN (CTA) -->
+    <div class="bayu_cta_ppdb">
+        <div class="bayu_container">
+            <div class="bayu_cta_content">
+                <div class="bayu_cta_text">
+                    <h2>Siap Mendaftarkan Putra-Putri Anda?</h2>
+                    <p>Daftarkan calon siswa baru secara online dengan mudah melalui formulir pendaftaran kami.</p>
+                </div>
+                <a href="formulirpendaftaran.html" class="bayu_btn_cta_large"><i class="fa-solid fa-file-signature"></i>
+                    Formulir PPDB Online</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. FOOTER -->
+    <div class="bayu_footer">
+        <div class="bayu_container">
+            <div class="bayu_footer_grid">
+                <!-- Kolom 1 -->
+                <div class="bayu_footer_col bayu_footer_about">
+                    <h4>SDN SINDANGASIH</h4>
+                    <p>
+                        Sekolah Dasar Negeri di Kecamatan Salopa, Kabupaten Tasikmalaya yang berkomitmen mencetak
+                        generasi cerdas dan berakhlak mulia.
+                    </p>
+                    <p style="color: #cbd5e1; font-size: 12px;">
+                        NPSN: 20210218 • Status: Negeri
+                    </p>
+                    <div class="bayu_footer_social">
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i
+                                class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/6285353419201" target="_blank" aria-label="WhatsApp"><i
+                                class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Kolom 2 -->
+                <div class="bayu_footer_col bayu_footer_links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="#about"><i class="fa-solid fa-chevron-right"></i> Profil Sekolah</a></li>
+                        <li><a href="#akademik"><i class="fa-solid fa-chevron-right"></i> Program Siswa</a></li>
+                        <li><a href="#galeri"><i class="fa-solid fa-chevron-right"></i> Galeri Foto</a></li>
+                        <li><a href="formulirpendaftaran.html"><i class="fa-solid fa-chevron-right"></i> Pendaftaran
+                                (PPDB)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3 -->
+                <div class="bayu_footer_col bayu_footer_links">
+                    <h4>Informasi</h4>
+                    <ul>
+                        <li><a href="formulirpendaftaran.html"><i class="fa-solid fa-chevron-right"></i> Syarat
+                                Pendaftaran</a></li>
+                        <li><a href="#akademik"><i class="fa-solid fa-chevron-right"></i> Kegiatan Siswa</a></li>
+                        <li><a href="#about"><i class="fa-solid fa-chevron-right"></i> Tenaga Pendidik</a></li>
+                        <li><a href="#galeri"><i class="fa-solid fa-chevron-right"></i> Fasilitas Sekolah</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 4 -->
+                <div class="bayu_footer_col bayu_footer_contact">
+                    <h4>Kontak Kami</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> <span>Kp. Sindangasih RT 01 / RW 01, Desa
+                                Banjarwaringin, Kec. Salopa, Kab. Tasikmalaya (46192)</span></li>
+                        <li><i class="fa-solid fa-phone"></i> <span>0853-5341-9201</span></li>
+                        <li><i class="fa-solid fa-envelope"></i> <span>sdnsindangasih@yahoo.com</span></li>
+                        <li><i class="fa-solid fa-clock"></i> <span>Senin - Jumat (07.00 - 13.00 WIB)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bayu_footer_bottom">
+            <div class="bayu_container">
+                <p>&copy; 2026 SDN SINDANGASIH Salopa, Kab. Tasikmalaya. All Rights Reserved. Tugas UTS Pemrograman Web
+                    - Bayu Muhamad Arib Irfani (2503010123).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT: MENU MOBILE DI HP -->
+    <script>
+        var menuToggle = document.getElementById('bayu_menu_toggle');
+        var navMenu = document.getElementById('bayu_nav_menu');
+
+        if (menuToggle && navMenu) {
+            menuToggle.onclick = function () {
+                if (navMenu.className === 'bayu_nav_menu') {
+                    navMenu.className = 'bayu_nav_menu active';
+                } else {
+                    navMenu.className = 'bayu_nav_menu';
+                }
+            };
+
+            var navLinks = navMenu.getElementsByTagName('a');
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].onclick = function () {
+                    navMenu.className = 'bayu_nav_menu';
+                };
+            }
+        }
+    </script>
+
+</body>
+
+</html>

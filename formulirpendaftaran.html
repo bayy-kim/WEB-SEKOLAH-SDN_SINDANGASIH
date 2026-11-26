@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran Siswa Baru (PPDB) - SDN SINDANGASIH SALOPA</title>
+    <!-- Library Ikon Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* RESET & GAYA UMUM */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            background-color: #f8fafc;
+            color: #333333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .bayu_container {
+            width: 90%;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        /* HEADER DAN NAVBAR */
+        .bayu_header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .bayu_navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .bayu_logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bayu_brand_icon {
+            width: 44px;
+            height: 44px;
+            background-color: #005A9C;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+        .bayu_brand_text h1 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #005A9C;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+
+        .bayu_brand_text p {
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748b;
+            letter-spacing: 0.5px;
+        }
+
+        .bayu_nav_menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bayu_nav_link {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            padding: 8px 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .bayu_nav_link:hover,
+        .bayu_nav_link.active {
+            color: #005A9C;
+        }
+
+        .bayu_btn_ppdb {
+            background-color: #d97706;
+            color: #ffffff !important;
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .bayu_btn_ppdb:hover {
+            background-color: #b45309;
+            transform: translateY(-2px);
+        }
+
+        .bayu_menu_toggle {
+            display: none;
+            background: none;
+            border: 1px solid #005A9C;
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 16px;
+            color: #005A9C;
+            cursor: pointer;
+        }
+
+        /* BANNER HALAMAN */
+        .bayu_page_banner {
+            background: linear-gradient(rgba(0, 54, 102, 0.88), rgba(0, 90, 156, 0.9)), url('asset/sdn_salopa_1.jpg') center/cover no-repeat;
+            color: #ffffff;
+            padding: 45px 0;
+            text-align: center;
+        }
+
+        .bayu_banner_badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(217, 119, 6, 0.3);
+            border: 1px solid #d97706;
+            color: #fed7aa;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .bayu_page_banner h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .bayu_page_banner p {
+            color: #e2e8f0;
+            font-size: 14px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* FORMULIR PENDAFTARAN */
+        .bayu_form_wrapper {
+            padding: 45px 0 60px 0;
+            flex: 1;
+        }
+
+        .bayu_form_card {
+            background-color: #ffffff;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 35px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #005A9C;
+        }
+
+        .bayu_form_intro {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .bayu_intro_icon {
+            width: 50px;
+            height: 50px;
+            background-color: #eff6ff;
+            color: #005A9C;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .bayu_intro_text h3 {
+            color: #003666;
+            font-size: 19px;
+            margin-bottom: 4px;
+        }
+
+        .bayu_intro_text p {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .bayu_form_group_section {
+            margin-bottom: 30px;
+        }
+
+        .bayu_section_subtitle {
+            font-size: 15px;
+            font-weight: bold;
+            color: #005A9C;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bayu_form_grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 20px;
+        }
+
+        .bayu_form_full {
+            grid-column: span 2;
+        }
+
+        .bayu_form_control {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .bayu_form_control label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .bayu_form_control label .required {
+            color: #dc2626;
+            font-weight: bold;
+        }
+
+        .bayu_form_control input,
+        .bayu_form_control select,
+        .bayu_form_control textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 13px;
+            color: #1e293b;
+            background-color: #ffffff;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .bayu_form_control input:focus,
+        .bayu_form_control select:focus,
+        .bayu_form_control textarea:focus {
+            border-color: #005A9C;
+            box-shadow: 0 0 0 3px rgba(0, 90, 156, 0.15);
+        }
+
+        .bayu_form_control textarea {
+            resize: vertical;
+        }
+
+        /* BOX INFORMASI PERSYARATAN */
+        .bayu_info_syarat {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 14px 18px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #1e3a8a;
+        }
+
+        .bayu_info_syarat p {
+            margin-bottom: 8px;
+        }
+
+        .bayu_info_syarat ul {
+            padding-left: 5px;
+        }
+
+        .bayu_info_syarat li {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1e293b;
+        }
+
+        .bayu_info_syarat li i {
+            color: #16a34a;
+            font-size: 12px;
+        }
+
+        /* TOMBOL AKSI FORMULIR */
+        .bayu_form_actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 14px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .bayu_btn_submit {
+            background-color: #d97706;
+            color: #ffffff;
+            border: none;
+            padding: 12px 26px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .bayu_btn_submit:hover {
+            background-color: #b45309;
+            transform: translateY(-2px);
+        }
+
+        .bayu_btn_reset {
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .bayu_btn_reset:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* FOOTER */
+        .bayu_footer {
+            background-color: #002244;
+            color: #94a3b8;
+            padding-top: 45px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bayu_footer_grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .bayu_footer_col h4 {
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #d97706;
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .bayu_footer_about p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .bayu_footer_social {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .bayu_footer_social a {
+            width: 32px;
+            height: 32px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .bayu_footer_social a:hover {
+            background-color: #d97706;
+        }
+
+        .bayu_footer_links li {
+            margin-bottom: 8px;
+        }
+
+        .bayu_footer_links a {
+            font-size: 13px;
+            color: #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .bayu_footer_links a:hover {
+            color: #ffffff;
+        }
+
+        .bayu_footer_contact li {
+            font-size: 13px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .bayu_footer_contact li i {
+            color: #d97706;
+            margin-top: 4px;
+            font-size: 14px;
+        }
+
+        .bayu_footer_bottom {
+            background-color: #001730;
+            padding: 16px 0;
+            font-size: 12px;
+            text-align: center;
+            color: #64748b;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* RESPONSIVE MOBILE */
+        @media (max-width: 900px) {
+            .bayu_footer_grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .bayu_form_grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bayu_form_full {
+                grid-column: span 1;
+            }
+
+            .bayu_form_card {
+                padding: 24px 20px;
+            }
+
+            .bayu_form_intro {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .bayu_form_actions {
+                flex-direction: column-reverse;
+            }
+
+            .bayu_btn_submit,
+            .bayu_btn_reset {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .bayu_menu_toggle {
+                display: block;
+            }
+
+            .bayu_nav_menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                flex-direction: column;
+                padding: 15px 20px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                display: none;
+                gap: 12px;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            .bayu_nav_menu.active {
+                display: flex;
+            }
+
+            .bayu_nav_link {
+                width: 100%;
+                padding: 6px 0;
+            }
+
+            .bayu_btn_ppdb {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .bayu_footer_grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. HEADER DAN NAVBAR -->
+    <div class="bayu_header">
+        <div class="bayu_container">
+            <div class="bayu_navbar">
+                <!-- Logo & Identitas -->
+                <a href="index.html" class="bayu_logo">
+                    <div class="bayu_brand_icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="bayu_brand_text">
+                        <h1>SDN SINDANGASIH</h1>
+                        <p>KECAMATAN SALOPA • KAB. TASIKMALAYA</p>
+                    </div>
+                </a>
+
+                <!-- Tombol Menu Mobile -->
+                <button class="bayu_menu_toggle" id="bayu_menu_toggle" aria-label="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- Daftar Menu Navigasi -->
+                <ul class="bayu_nav_menu" id="bayu_nav_menu">
+                    <li><a href="index.html" class="bayu_nav_link"><i class="fa-solid fa-house"></i> Beranda</a></li>
+                    <li><a href="index.html#about" class="bayu_nav_link"><i class="fa-solid fa-circle-info"></i> Profil Sekolah</a></li>
+                    <li><a href="index.html#akademik" class="bayu_nav_link"><i class="fa-solid fa-book-open"></i> Program</a></li>
+                    <li><a href="index.html#galeri" class="bayu_nav_link"><i class="fa-solid fa-images"></i> Galeri</a></li>
+                    <li><a href="index.html#contact" class="bayu_nav_link"><i class="fa-solid fa-phone"></i> Kontak</a></li>
+                    <li><a href="formulirpendaftaran.html" class="bayu_btn_ppdb"><i class="fa-solid fa-user-plus"></i> PPDB Online</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. BANNER HALAMAN -->
+    <div class="bayu_page_banner">
+        <div class="bayu_container">
+            <div class="bayu_banner_badge"><i class="fa-solid fa-file-signature"></i> PPDB Online 2026/2027</div>
+            <h2>Formulir Pendaftaran Siswa Baru</h2>
+            <p>Penerimaan Peserta Didik Baru (PPDB) SDN Sindangasih Salopa, Kabupaten Tasikmalaya</p>
+        </div>
+    </div>
+
+    <!-- 3. BAGIAN FORMULIR PENDAFTARAN -->
+    <div class="bayu_form_wrapper">
+        <div class="bayu_container">
+            <div class="bayu_form_card">
+                <div class="bayu_form_intro">
+                    <div class="bayu_intro_icon"><i class="fa-solid fa-id-card"></i></div>
+                    <div class="bayu_intro_text">
+                        <h3>Isi Formulir Calon Siswa Baru</h3>
+                        <p>Silakan isi seluruh formulir berikut ini dengan teliti dan benar sesuai dokumen resmi (Akta Kelahiran dan Kartu Keluarga). Kolom dengan tanda bintang (<span class="required">*</span>) wajib diisi.</p>
+                    </div>
+                </div>
+
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Terima kasih! Formulir pendaftaran atas nama ' + document.getElementById('nama_lengkap').value + ' berhasil dikirim.\nPanitia PPDB SDN Sindangasih Salopa akan segera menghubungi nomor WhatsApp Anda.'); this.reset();">
+
+                    <!-- Bagian 1: Data Calon Siswa -->
+                    <div class="bayu_form_group_section">
+                        <div class="bayu_section_subtitle">
+                            <i class="fa-solid fa-user"></i>
+                            <span>1. Data Pribadi Calon Siswa</span>
+                        </div>
+                        <div class="bayu_form_grid">
+                            <div class="bayu_form_control bayu_form_full">
+                                <label for="nama_lengkap">Nama Lengkap Siswa <span class="required">*</span></label>
+                                <input type="text" id="nama_lengkap" name="nama_lengkap" placeholder="Contoh: Muhammad Rizki Pratama" required>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="nik">NIK Calon Siswa (16 Digit) <span class="required">*</span></label>
+                                <input type="text" id="nik" name="nik" placeholder="Contoh: 3206123456780001" maxlength="16" required>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="jenis_kelamin">Jenis Kelamin <span class="required">*</span></label>
+                                <select id="jenis_kelamin" name="jenis_kelamin" required>
+                                    <option value="">-- Pilih Jenis Kelamin --</option>
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="tempat_lahir">Tempat Lahir <span class="required">*</span></label>
+                                <input type="text" id="tempat_lahir" name="tempat_lahir" placeholder="Contoh: Tasikmalaya" required>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="tanggal_lahir">Tanggal Lahir <span class="required">*</span></label>
+                                <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="agama">Agama <span class="required">*</span></label>
+                                <select id="agama" name="agama" required>
+                                    <option value="">-- Pilih Agama --</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Katolik">Katolik</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Buddha">Buddha</option>
+                                    <option value="Konghucu">Konghucu</option>
+                                </select>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="asal_sekolah">Asal Sekolah Sebelumnya</label>
+                                <input type="text" id="asal_sekolah" name="asal_sekolah" placeholder="Contoh: TK / PAUD / RA / Belum Pernah">
+                            </div>
+
+                            <div class="bayu_form_control bayu_form_full">
+                                <label for="alamat">Alamat Tempat Tinggal (Sesuai KK) <span class="required">*</span></label>
+                                <textarea id="alamat" name="alamat" rows="3" placeholder="Contoh: Kp. Sindangasih RT 01 / RW 01, Desa Banjarwaringin, Kec. Salopa, Kab. Tasikmalaya" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bagian 2: Data Orang Tua / Wali -->
+                    <div class="bayu_form_group_section">
+                        <div class="bayu_section_subtitle">
+                            <i class="fa-solid fa-users"></i>
+                            <span>2. Data Orang Tua / Wali Siswa</span>
+                        </div>
+                        <div class="bayu_form_grid">
+                            <div class="bayu_form_control">
+                                <label for="nama_ayah">Nama Lengkap Ayah / Wali <span class="required">*</span></label>
+                                <input type="text" id="nama_ayah" name="nama_ayah" placeholder="Contoh: Ahmad Hidayat" required>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="pekerjaan_ayah">Pekerjaan Ayah / Wali <span class="required">*</span></label>
+                                <input type="text" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Contoh: Petani / Wiraswasta / Karyawan" required>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="nama_ibu">Nama Lengkap Ibu Kandung <span class="required">*</span></label>
+                                <input type="text" id="nama_ibu" name="nama_ibu" placeholder="Contoh: Siti Aisyah" required>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="pekerjaan_ibu">Pekerjaan Ibu <span class="required">*</span></label>
+                                <input type="text" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Contoh: Ibu Rumah Tangga / Pedagang" required>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="no_telepon">No. WhatsApp / HP Aktif <span class="required">*</span></label>
+                                <input type="tel" id="no_telepon" name="no_telepon" placeholder="Contoh: 085353419201" required>
+                            </div>
+
+                            <div class="bayu_form_control">
+                                <label for="penghasilan">Penghasilan Orang Tua / Bulan</label>
+                                <select id="penghasilan" name="penghasilan">
+                                    <option value="">-- Pilih Rentang Penghasilan --</option>
+                                    <option value="Kurang dari Rp 1.000.000">&lt; Rp 1.000.000</option>
+                                    <option value="Rp 1.000.000 - Rp 2.500.000">Rp 1.000.000 - Rp 2.500.000</option>
+                                    <option value="Rp 2.500.000 - Rp 5.000.000">Rp 2.500.000 - Rp 5.000.000</option>
+                                    <option value="Lebih dari Rp 5.000.000">&gt; Rp 5.000.000</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bagian 3: Dokumen Persyaratan -->
+                    <div class="bayu_form_group_section">
+                        <div class="bayu_section_subtitle">
+                            <i class="fa-solid fa-folder-open"></i>
+                            <span>3. Dokumen Persyaratan (Bawa Saat Verifikasi)</span>
+                        </div>
+                        <div class="bayu_info_syarat">
+                            <p><strong><i class="fa-solid fa-circle-info"></i> Catatan Dokumen Fisik:</strong></p>
+                            <ul>
+                                <li><i class="fa-solid fa-check"></i> Fotokopi Akta Kelahiran Calon Siswa (2 Lembar)</li>
+                                <li><i class="fa-solid fa-check"></i> Fotokopi Kartu Keluarga / KK (2 Lembar)</li>
+                                <li><i class="fa-solid fa-check"></i> Fotokopi KTP Kedua Orang Tua / Wali</li>
+                                <li><i class="fa-solid fa-check"></i> Pas Foto Calon Siswa ukuran 3x4 (3 Lembar)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Aksi Formulir -->
+                    <div class="bayu_form_actions">
+                        <button type="reset" class="bayu_btn_reset">
+                            <i class="fa-solid fa-rotate-left"></i> Reset Formulir
+                        </button>
+                        <button type="submit" class="bayu_btn_submit">
+                            <i class="fa-solid fa-paper-plane"></i> Kirim Formulir Pendaftaran
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. FOOTER -->
+    <div class="bayu_footer">
+        <div class="bayu_container">
+            <div class="bayu_footer_grid">
+                <!-- Kolom 1 -->
+                <div class="bayu_footer_col bayu_footer_about">
+                    <h4>SDN SINDANGASIH</h4>
+                    <p>
+                        Sekolah Dasar Negeri di Kecamatan Salopa, Kabupaten Tasikmalaya yang berkomitmen mencetak generasi cerdas dan berakhlak mulia.
+                    </p>
+                    <p style="color: #cbd5e1; font-size: 12px;">
+                        NPSN: 20210218 • Status: Negeri
+                    </p>
+                    <div class="bayu_footer_social">
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/6285353419201" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Kolom 2 -->
+                <div class="bayu_footer_col bayu_footer_links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="index.html#about"><i class="fa-solid fa-chevron-right"></i> Profil Sekolah</a></li>
+                        <li><a href="index.html#akademik"><i class="fa-solid fa-chevron-right"></i> Program Siswa</a></li>
+                        <li><a href="index.html#galeri"><i class="fa-solid fa-chevron-right"></i> Galeri Foto</a></li>
+                        <li><a href="formulirpendaftaran.html"><i class="fa-solid fa-chevron-right"></i> Pendaftaran (PPDB)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3 -->
+                <div class="bayu_footer_col bayu_footer_links">
+                    <h4>Informasi</h4>
+                    <ul>
+                        <li><a href="formulirpendaftaran.html"><i class="fa-solid fa-chevron-right"></i> Syarat Pendaftaran</a></li>
+                        <li><a href="index.html#akademik"><i class="fa-solid fa-chevron-right"></i> Kegiatan Siswa</a></li>
+                        <li><a href="index.html#about"><i class="fa-solid fa-chevron-right"></i> Tenaga Pendidik</a></li>
+                        <li><a href="index.html#galeri"><i class="fa-solid fa-chevron-right"></i> Fasilitas Sekolah</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 4 -->
+                <div class="bayu_footer_col bayu_footer_contact">
+                    <h4>Kontak Kami</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> <span>Kp. Sindangasih RT 01 / RW 01, Desa Banjarwaringin, Kec. Salopa, Kab. Tasikmalaya (46192)</span></li>
+                        <li><i class="fa-solid fa-phone"></i> <span>0853-5341-9201</span></li>
+                        <li><i class="fa-solid fa-envelope"></i> <span>sdnsindangasih@yahoo.com</span></li>
+                        <li><i class="fa-solid fa-clock"></i> <span>Senin - Jumat (07.00 - 13.00 WIB)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bayu_footer_bottom">
+            <div class="bayu_container">
+                <p>&copy; 2026 SDN SINDANGASIH Salopa, Kab. Tasikmalaya. All Rights Reserved. Tugas UTS Pemrograman Web - Bayu Muhamad Arib Irfani (2503010123).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT: MENU MOBILE DI HP -->
+    <script>
+        var menuToggle = document.getElementById('bayu_menu_toggle');
+        var navMenu = document.getElementById('bayu_nav_menu');
+
+        if (menuToggle && navMenu) {
+            menuToggle.onclick = function () {
+                if (navMenu.className === 'bayu_nav_menu') {
+                    navMenu.className = 'bayu_nav_menu active';
+                } else {
+                    navMenu.className = 'bayu_nav_menu';
+                }
+            };
+
+            var navLinks = navMenu.getElementsByTagName('a');
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].onclick = function () {
+                    navMenu.className = 'bayu_nav_menu';
+                };
+            }
+        }
+    </script>
+
+</body>
+
+</html>
